@@ -1,6 +1,6 @@
 <template>
     <!-- tag form used to reset the input (method .reset() in claer() function) -->
-  <form class="flex items-center justify-center w-full"
+  <form ref="form" class="flex items-center justify-center w-full"
     @dragover.prevent="dragging = true"
     @dragleave.prevent="dragging = false"
     @drop.prevent="dragging = false; doEmit($event.dataTransfer.files)"
@@ -125,12 +125,12 @@ function doEmit(filesIn: FileList) {
 }
 
 const dragging = ref(false);
+const form = ref<HTMLFormElement | null>(null);
 
 function clear() {
   selectedFiles.value = [];
   emit('update:modelValue', []);
-  const form = document.getElementById(id)?.closest('form');
-  form?.reset();
+  form.value?.reset();
 }
 
 defineExpose({
