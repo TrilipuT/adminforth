@@ -8,6 +8,7 @@ import createApp from "./createApp/main.js";
 import generateModels from "./generateModels.js";
 import createPlugin from "./createPlugin/main.js";
 import createComponent from "./createCustomComponent/main.js";
+import createSuperuser from "./createSuperuser.js";
 import chalk from "chalk";
 import path from "path";
 import fs from "fs";
@@ -54,6 +55,9 @@ switch (command) {
     break;
   case "bundle":
     bundle();
+    break;
+  case "create-superuser":
+    createSuperuser(args);
     break;
   case "component":
     createComponent(args);
